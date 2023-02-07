@@ -13679,10 +13679,14 @@
     <div class="container mt-4 px-3 mb-5 responsive">
         <script type="text/javascript">
             var namaPengguna = localStorage.getItem("namaPengguna");
-            if (!namaPengguna) {
+            if (!namaPengguna || namaPengguna === null) {
                 namaPengguna = prompt("Masukkan Nama :");
                 localStorage.setItem("namaPengguna", namaPengguna);
-            }
+            } else if (namaPengguna === "null") {
+                localStorage.removeItem("namaPengguna");
+                namaPengguna = prompt("Masukkan Nama :");
+                localStorage.setItem("namaPengguna", namaPengguna);
+            }            
             document.write("<h1>Halo, " + namaPengguna + "!</h1>");
 
             // Script Prompt Nama
@@ -13706,7 +13710,7 @@
             </tr>
             <tr>
                 <td align="center"></td>
-                <td align="center"><button class="btn btn-primary btn-lg">FORWARD</button></td>
+                <td align="center"><button class="btn btn-primary btn-lg">BACKWARD</button></td>
                 <td align="center"></td>
             </tr>
         </table>
@@ -13714,7 +13718,7 @@
 
 
     <!-- SPEED RANGE -->
-    <div class="responsive">
+    <div class="responsive container">
         <div class="bg-range">
             <label for="customRange" class="form-label text-center fw-semibold text-dark">SESUAIKAN KECEPATAN</label>
             <input type="range" class="form-range" min="0" max="10" value="5" id="customRange">
@@ -13724,7 +13728,7 @@
     
 
     <!-- BUTTON  SPEED -->
-    <div class="responsive">
+    <div class="responsive container">
         <div class="d-flex gap-3 mt-5">
             <button class="btn btn-warning btn-lg">SPEED LOW</button>
             <button class="btn btn-warning btn-lg">SPEED MEDIUM</button>
